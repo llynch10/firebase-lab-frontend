@@ -13,11 +13,11 @@ interface RouteParams {
 const ShoutOutToRoute = () => {
   const [shoutOuts, setShoutOuts] = useState<ShoutOut[]>();
   const { name } = useParams<RouteParams>();
-  const getShoutOuts = async () => {
+  const getShoutOuts = async (name: string) => {
     setShoutOuts(await getShoutOutsByTo(name));
   };
   useEffect(() => {
-    getShoutOuts();
+    getShoutOuts(name);
   }, [name]);
 
   const addShoutOut = async (shoutOut: ShoutOut) => {
